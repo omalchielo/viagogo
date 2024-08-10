@@ -48,7 +48,7 @@ try:
                         "formattedMinPrice" in json_object):
 
                     # Check if the price is below the threshold of 11500
-                    if json_object["rawMinPrice"] < 11500:
+                    if json_object["rawMinPrice"] < 450:
                         found_ticket = True
                         # Accumulate ticket details
                         ticket_details += (
@@ -59,7 +59,7 @@ try:
                         )
 
                     # Check if the price is below the threshold of 11050
-                    if json_object["rawMinPrice"] < 10000:
+                    if json_object["rawMinPrice"] < 350:
                         found_very_cheap_ticket = True
 
             except json.JSONDecodeError:
