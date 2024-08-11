@@ -25,6 +25,12 @@ def send_email(subject, content):
         smtp.send_message(em)
 
 try:
+    # Send an email notification that the bot has started
+    send_email("Bot Started", "The ticket checking bot has started successfully.")
+
+    last_status_email_time = time.time()
+    status_interval = 2 * 60 * 60  # 2 hours in seconds
+
     while True:
         response = requests.get(url)
         html_content = response.text
@@ -47,7 +53,7 @@ try:
                         "formattedMinPrice" in json_object):
 
                     # Check if the price is below the threshold of 450
-                    if json_object["rawMinPrice"] < 450:
+                    if json_object["rawMinPrice"] < 400:
                         found_ticket = True
                         # Accumulate ticket details
                         ticket_details += (
@@ -77,7 +83,13 @@ try:
         if found_very_cheap_ticket:
             send_email("We Got It", f"We got it! Tickets found under 350:\n\n{very_cheap_ticket_details}")
 
-        time.sleep(480)
+        # Check if it's time to send a status email
+        current_time = time.time()
+        if current_time - last_status_email_time >= status_interval:
+            send_email("Status Update", "The script is still running smoothly.")
+            last_status_email_time = current_time
+
+        time.sleep(480)  # Sleep for 8 minutes before the next check
 
 except Exception as e:
     def send_status_email():
