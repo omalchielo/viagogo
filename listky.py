@@ -6,7 +6,7 @@ from email.message import EmailMessage
 import ssl
 import time
 
-url = "https://www.viagogo.com/Concert-Tickets/Country-and-Folk-Music/Taylor-Swift-Tickets/E-152599802?quantity=2&sortDirection=0&sortBy=NEWPRICE"
+url = "https://www.viagogo.com/Concert-Tickets/Country-and-Folk-Music/Taylor-Swift-Tickets/E-151949754?quantity=2"
 
 def send_email(subject, content):
     email_sender = "botrozvrh@gmail.com"
