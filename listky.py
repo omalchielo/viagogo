@@ -78,10 +78,10 @@ try:
                 continue
 
         if found_ticket:
-            send_email("Tickets Found Below 450", f"Tickets under 450 found:\n\n{ticket_details}")
+            send_email("Tickets Found Below 450", f"Tickets under 400 found:\n\n{ticket_details}")
 
         if found_very_cheap_ticket:
-            send_email("We Got It", f"We got it! Tickets found under 350:\n\n{very_cheap_ticket_details}")
+            send_email("We Got It", f"We got it! Tickets found under 300:\n\n{very_cheap_ticket_details}")
 
         # Check if it's time to send a status email
         current_time = time.time()
