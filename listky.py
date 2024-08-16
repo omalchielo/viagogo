@@ -53,7 +53,7 @@ try:
                         "formattedMinPrice" in json_object):
 
                     # Check if the price is below the threshold of 450
-                    if json_object["rawMinPrice"] < 400:
+                    if json_object["rawMinPrice"] < 300:
                         found_ticket = True
                         # Accumulate ticket details
                         ticket_details += (
@@ -64,7 +64,7 @@ try:
                         )
 
                     # Check if the price is below the threshold of 350
-                    if json_object["rawMinPrice"] < 350:
+                    if json_object["rawMinPrice"] < 250:
                         found_very_cheap_ticket = True
                         # Accumulate very cheap ticket details
                         very_cheap_ticket_details += (
@@ -78,10 +78,10 @@ try:
                 continue
 
         if found_ticket:
-            send_email("Tickets Found Below 450", f"Tickets under 400 found:\n\n{ticket_details}")
+            send_email("Tickets Found Below 450", f"Tickets under 300 found:\n\n{ticket_details}")
 
         if found_very_cheap_ticket:
-            send_email("We Got It", f"We got it! Tickets found under 300:\n\n{very_cheap_ticket_details}")
+            send_email("We Got It", f"We got it! Tickets found under 250:\n\n{very_cheap_ticket_details}")
 
         # Check if it's time to send a status email
         current_time = time.time()
